@@ -1,9 +1,19 @@
+// Example from https://github.com/cheggaaa/pb
+
 package main
 
 import (
-	"fmt"
+    "gopkg.in/cheggaaa/pb.v1"
+    "time"
 )
 
 func main() {
-	fmt.Printf("Hello World\n")
+    count := 100000
+    bar := pb.StartNew(count)
+    for i := 0; i < count; i++ {
+        bar.Increment()
+        time.Sleep(time.Millisecond)
+    }
+    bar.FinishPrint("The End!")
 }
+
